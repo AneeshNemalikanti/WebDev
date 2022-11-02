@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function convert(){
+            var amount = document.getElementById('amount').value;
+            var from = document.getElementById('from').value;
+            var to = document.getElementById('to').value;
+            var result = "";
+            switch(from){
+                case "USD":
+                           switch(to){
+                               case "USD": result = "$."+amount;
+                                           break;
+                               case "INR": result = "₹."+amount*79.91;
+                                           break;
+                           }
+                           break;
+                case "INR":
+                            switch(to){
+                               case "USD": result = "$."+amount/79.91;
+                                           break;
+                               case "INR": result = "₹."+amount;
+                                           break;
+                           }
+                           break;
+            }
+            document.getElementById('result').innerHTML = result;  
+        }
+    </script>
+</head>
+<body>
+    Amount: <input type="text" id="amount" onkeyup="convert()">
+    <br><br>
+    From:
+    <select id="from" onchange="convert()">
+        <option>USD</option>
+        <option>INR</option>
+    </select>
+    <br><br>
+    To:
+    <select id="to" onchange="convert()">
+        <option>USD</option>
+        <option>INR</option>
+    </select>
+    <br><br>
+    <div id="result" style="color:blue;font-size:20px;"></div>
+</body>
+</html>
