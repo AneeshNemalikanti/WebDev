@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+        </script>
+        <script>
+            var app = angular.module("myapp",[]);
+            app.controller("mycontrol",function($scope){
+                $scope.findgrade = function(){
+                    $scope.output =(parseInt($scope.c1)+parseInt($scope.c2)+parseInt($scope.c3)+parseInt($scope.c4)+parseInt($scope.c5))/5;
+                    
+                    if($scope.output>95){
+                        $scope.grade="S";
+                    }
+                    else if($scope.output>85 && 95){
+                        $scope.grade="A";
+                    }
+                    else if($scope.output>75 && 85){
+                        $scope.grade="B";
+                    }
+                    else if($scope.output>65 && 75){
+                        $scope.grade="C"
+                    }
+                    else if($scope.output>50 && 65){
+                        $scope.grade="P"
+                    }
+                    else if($scope.output<50){
+                        $scope.grade="F"
+                    }
+                    
+                }
+            })
+        </script>
+    </head>
+    <body ng-app="myapp" ng-controller="mycontrol">
+        <div style="text-align:center">
+        <h1 style="text-align:center;background-color:blue;color:white">My College</h1>
+        <label>student Name:</label><br>
+        <input type="text" ng-model="s">
+        <br>
+        <label>student regno:</label><br>
+        <input type="text" ng-model="reg">
+        <br>
+        <label>course 1 marks</label><br>
+        <input type="text" ng-model="c1">
+        <br>
+        <label> course 2 mrks</label><br>
+        <input type="text" ng-model="c2">
+        <br>
+        <label>course 3 marks:</label><br>
+        <input type="text" ng-model="c3">
+        <br>
+        <label>course 4 marks</label><br>
+        <input type="text" ng-model="c4">
+        <br>
+        <label>course 5 marks</label><br>
+        <input type="text" ng-model="c5"><br><br>
+        <button ng-click="findgrade()" style="background-color: blue;">find grade</button><br><br>
+        <h3 style="background-color:green;">Grade Details</h3><br>
+        Average marks<span ng-bind="output" ></span><br><br>
+        <span ng-bind="grade" style="background-color:green">Grade</span>
+        </div>
+
+    </body>
+</html>
